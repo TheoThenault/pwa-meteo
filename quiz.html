@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <h1>Quiz sur la météo d'aujourd'hui</h1>
+
+
+        <p>
+            Quelle est la temperature ressentie ?
+        </p>
+        <input type="number">
+
+        <p>
+            Quelle est la pression ressentie ?
+        </p>
+        <input type="number">
+
+        <p>
+            Quel est le taux d'humidité ?
+        </p>
+        <input type="range" min="0" max="100">
+
+        <p>
+            Description du climat
+        </p>
+        <input type="text" list="climat_desc">
+        <datalist id="climat_desc">
+            <option value="clear sky"></option>
+            <option value="few clouds"></option>
+            <option value="scattered clouds"></option>
+            <option value="broken clouds"></option>
+            <option value="shower rain"></option>
+            <option value="rain"></option>
+            <option value="thunderstorm"></option>
+            <option value="snow"></option>
+            <option value="mist"></option>
+        </datalist>
+
+        <p>
+            Quelle est la direction du vent ?
+        </p>
+        <input type="range" min="0" max="360">
+
+        <p>
+            Quelle est la distance de Visibilité ? (maximum 10km)
+        </p>
+        <input type="range" min="0" max="10000">
+
+        <p>
+            Queles sont les precipitations ? (en mm)
+        </p>
+        <input type="range" min="0" max="10000">
+
+        <p>
+            A quelle heure le soleil se lève ?
+        </p>
+        <input type="range" min="0" max="10000">
+
+        <p>
+            Coucher du soleil
+        </p>
+    </body>
