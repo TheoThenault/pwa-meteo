@@ -1,3 +1,5 @@
+export {sauvegarder, lire}
+
 function sauvegarder(key, value)
 {
     if('localStorage' in window)
@@ -5,6 +7,14 @@ function sauvegarder(key, value)
         window.localStorage.setItem(key, value);
     }
     persistStorage()
+}
+
+function lire(key)
+{
+    if('localStorage' in window)
+    {
+        return window.localStorage[key]
+    }
 }
 
 function persistStorage()
@@ -16,6 +26,7 @@ function persistStorage()
         }
     })
 }
+
 
 
 
