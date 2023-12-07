@@ -1,4 +1,4 @@
-export {getAServiceWorker, createServiceWorker}
+export {getAServiceWorker, createServiceWorker, registerHourlyCheck}
 
 function getAServiceWorker()
 {
@@ -32,3 +32,15 @@ function createServiceWorker()
           });
     }
 }
+
+async function registerHourlyCheck() {
+    const registration = await navigator.serviceWorker.ready;
+    try {
+      await registration.periodicSync.register("custom-periodic-sync", {
+        minInterval: 2 * 60 * 1000,
+      });
+    } catch {
+      console.log("Periodic Sync could not be registered!");
+    }
+  }
+  

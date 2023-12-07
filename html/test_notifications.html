@@ -7,7 +7,7 @@
         <script defer type="module" href="../scripts/service_worker_utils.js"></script>
         <script defer type="module">
             import {call_notification, requestPermission, nonPersistentNotification, persistentNotification} from "../scripts/notifications.js"
-            import {getAServiceWorker, createServiceWorker} from '../scripts/service_worker_utils.js'
+            import {getAServiceWorker, createServiceWorker, registerHourlyCheck} from '../scripts/service_worker_utils.js'
 
             window.requestPermissionb = requestPermission
             window.nonPersistentNotificationb = nonPersistentNotification
@@ -15,6 +15,7 @@
             window.call_notificationb = call_notification
             window.registerServiceWorkerb = createServiceWorker
             window.getAServiceWorkerb = getAServiceWorker
+            window.registerHourlyCheckb = registerHourlyCheck
         </script>
         <script defer type="module">
             import {getAServiceWorker} from '../scripts/service_worker_utils.js'
@@ -32,6 +33,7 @@
         <button onclick="call_notificationb('InfoMétéo', 'Notification')">call notifications</button>
         <button onclick="registerServiceWorkerb()">registerServiceWorker</button>
         <button onclick="getAServiceWorkerb()">getAServiceWorker</button>
+        <button onclick="registerHourlyCheckb()">registerHourlyCheck</button>
 
     </body>
 </html>
