@@ -7,6 +7,19 @@ function call_notification(title, message)
     //persistentNotification()
 }
 
+function registerServiceWorker()
+{
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('../scripts/service_worker.js')
+          .then(function(registration) {
+            console.log('Service Worker registered with scope:', registration.scope);
+          })
+          .catch(function(error) {
+            console.error('Service Worker registration failed:', error);
+          });
+      }
+}
+
 function requestPermission() {
     if (!('Notification' in window)) {
         alert('Notification API not supported!');
@@ -58,11 +71,7 @@ function persistentNotification() {
         console.log("try 3");
         navigator.serviceWorker.ready.getRegistration().then((registration) => {
             console.log("serviceworker.ready");
-            registration.showNotification("Vibration Sample", {
-                body: "Buzz! Buzz!",
-                vibrate: [200, 100, 200, 100, 200, 100, 200],
-                tag: "vibration-sample",
-            });
+            registration.showNotification("Vibration Sample");
         });
     } catch (err) {
       alert('Notification API error: ' + err);
