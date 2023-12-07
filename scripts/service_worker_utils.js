@@ -34,18 +34,28 @@ function createServiceWorker()
 }
 
 async function registerHourlyCheck() {
-
     if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.ready.then((registration) => {
-            registration.periodicSync.register("custom-periodic-sync", {minInterval: 2 * 60 * 1000}).then((result) => 
-            {
-                console.log("periodic sync registered")
-                console.log(result)
-            })
-        }).catch((reason) => {
-            console.log("Periodic Sync could not be registered!");
-            console.log(reason)
-        });
+
+        const status = await navigator.permissions.query({
+            name: 'periodic-background-sync',
+          });
+          if (status.state === 'granted') {
+            console.log("Periodic background sync can be used.")
+          } else {
+            console.log("Periodic background sync cannot be used.")
+          }
+          
+
+        // navigator.serviceWorker.ready.then((registration) => {
+        //     registration.periodicSync.register("custom-periodic-sync", {minInterval: 2 * 60 * 1000}).then((result) => 
+        //     {
+        //         console.log("periodic sync registered")
+        //         console.log(result)
+        //     })
+        // }).catch((reason) => {
+        //     console.log("Periodic Sync could not be registered!");
+        //     console.log(reason)
+        // });
     }
 }
   
