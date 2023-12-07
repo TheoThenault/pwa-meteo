@@ -3,15 +3,23 @@ export { call_notification, requestPermission, nonPersistentNotification, persis
 function call_notification(title, message)
 {
     requestPermission()
-    //registerServiceWorker()
-    persistentNotification()
-    //nonPersistentNotification()
+    
+    var success = nonPersistentNotification(title, message)
+    
+    if(!success)
+    {
+      success = persistentNotification(title, message)
+      if(!success)
+      {
+        alert("Erreur de notifications");
+      }
+    }
 }
 
 
 function requestPermission() {
     if (!('Notification' in window)) {
-        alert('Notification API not supported!');
+        console.log('Notification API not supported!');
         return;
     }
 
@@ -21,43 +29,42 @@ function requestPermission() {
 }
 
 
-function nonPersistentNotification() {
+function nonPersistentNotification(title, message) {
     if (!('Notification' in window)) {
-        alert('Notification API not supported!');
-        return;
+      console.log('Notification API not supported!');
+        return false;
     }
 
     try {
-        var notification = new Notification("Hi there - non-persistent!");
+        var notification = new Notification(title);
     } catch (err) {
-        alert('Notification API error: ' + err);
+        console.log('Notification API error: ' + err);
+        return false;
     }
 }
 
-function persistentNotification() {
+function persistentNotification(title, message) {
     console.log("persistent notifs");
     if (!('Notification' in window) || !('ServiceWorkerRegistration' in window)) {
-      alert('Persistent Notification API not supported!');
-      return;
+      console.log('Persistent Notification API not supported!');
+      return false;
     }
     
     try {
         console.log("try");
         navigator.serviceWorker.ready.then((registration) => {
             console.log("serviceworker.ready");
-            registration.showNotification("Vibration Sample", {
-                body: "Buzz! Buzz!",
-                vibrate: [200, 100, 200, 100, 200, 100, 200],
-                tag: "vibration-sample",
+            registration.showNotification(title, {
+                body: message
             });
         });
 
-        console.log("try 2");
-        navigator.serviceWorker.getRegistration()
-            .then((reg) => reg.showNotification("Hi there - persistent!"))
-            .catch((err) => alert('Service Worker registration error: ' + err));
+        // console.log("try 2");
+        // navigator.serviceWorker.getRegistration()
+        //     .then((reg) => reg.showNotification("Hi there - persistent!"))
+        //     .catch((err) => alert('Service Worker registration error: ' + err));
     } catch (err) {
-      alert('Notification API error: ' + err);
+      console.log('Notification API error: ' + err);
     }
 }
 // ############################################################################
