@@ -38,12 +38,21 @@ async function registerHourlyCheck() {
 
         const status = await navigator.permissions.query({
             name: 'periodic-background-sync',
-          });
-          if (status.state === 'granted') {
+        });
+        if (status.state === 'granted') {
             console.log("Periodic background sync can be used.")
-          } else {
+        } else {
             console.log("Periodic background sync cannot be used.")
-          }
+        }
+          
+        navigator.serviceWorker.ready.then(async registration => {
+            try {
+              await registration.periodicSync.register('custom-periodic-sync', { minInterval: 30 * 1000 });
+              console.log('Periodic background sync registered.');
+            } catch (err) {
+              console.error(err.name, err.message);
+            }
+        });
           
 
         // navigator.serviceWorker.ready.then((registration) => {
