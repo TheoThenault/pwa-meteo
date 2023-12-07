@@ -3,8 +3,9 @@ export { call_notification, requestPermission, nonPersistentNotification, persis
 function call_notification(title, message)
 {
     requestPermission()
-    nonPersistentNotification()
-    //persistentNotification()
+    //registerServiceWorker()
+    persistentNotification()
+    //nonPersistentNotification()
 }
 
 function registerServiceWorker()
@@ -67,12 +68,6 @@ function persistentNotification() {
         navigator.serviceWorker.getRegistration()
             .then((reg) => reg.showNotification("Hi there - persistent!"))
             .catch((err) => alert('Service Worker registration error: ' + err));
-
-        console.log("try 3");
-        navigator.serviceWorker.ready.getRegistration().then((registration) => {
-            console.log("serviceworker.ready");
-            registration.showNotification("Vibration Sample");
-        });
     } catch (err) {
       alert('Notification API error: ' + err);
     }
