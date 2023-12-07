@@ -1,4 +1,4 @@
-export { call_notification, requestPermission, nonPersistentNotification, persistentNotification, registerServiceWorker }
+export { call_notification, requestPermission, nonPersistentNotification, persistentNotification }
 
 function call_notification(title, message)
 {
@@ -8,18 +8,6 @@ function call_notification(title, message)
     //nonPersistentNotification()
 }
 
-function registerServiceWorker()
-{
-    if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('../service_worker.js', { scope: "./" })
-          .then(function(registration) {
-            console.log('Service Worker registered with scope:', registration.scope);
-          })
-          .catch(function(error) {
-            console.error('Service Worker registration failed:', error);
-          });
-      }
-}
 
 function requestPermission() {
     if (!('Notification' in window)) {
