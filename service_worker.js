@@ -1,4 +1,4 @@
-importScripts("./scripts/notifications.js")
+import {call_notification} from "./scripts/notifications.js"
 
 self.addEventListener("periodicsync", (event) => {
     if (event.tag === "custom-periodic-sync") {

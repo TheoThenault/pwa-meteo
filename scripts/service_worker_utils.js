@@ -23,7 +23,7 @@ function createServiceWorker()
 {
     // Starts a service worker
     if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('../service_worker.js', { scope: "./" })
+        navigator.serviceWorker.register('../service_worker.js', { scope: "./", type: "module" })
           .then(function(registration) {
             console.log('Service Worker registered with scope:', registration.scope);
           })
