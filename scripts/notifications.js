@@ -40,6 +40,7 @@ function persistentNotification() {
     }
     
     try {
+        console.log("try");
         navigator.serviceWorker.ready.then((registration) => {
             console.log("serviceworker.ready");
             registration.showNotification("Vibration Sample", {
