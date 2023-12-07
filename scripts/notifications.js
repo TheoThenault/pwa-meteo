@@ -49,9 +49,21 @@ function persistentNotification() {
                 tag: "vibration-sample",
             });
         });
-      navigator.serviceWorker.getRegistration()
-        .then((reg) => reg.showNotification("Hi there - persistent!"))
-        .catch((err) => alert('Service Worker registration error: ' + err));
+
+        console.log("try 2");
+        navigator.serviceWorker.getRegistration()
+            .then((reg) => reg.showNotification("Hi there - persistent!"))
+            .catch((err) => alert('Service Worker registration error: ' + err));
+
+        console.log("try 3");
+        navigator.serviceWorker.ready.getRegistration().then((registration) => {
+            console.log("serviceworker.ready");
+            registration.showNotification("Vibration Sample", {
+                body: "Buzz! Buzz!",
+                vibrate: [200, 100, 200, 100, 200, 100, 200],
+                tag: "vibration-sample",
+            });
+        });
     } catch (err) {
       alert('Notification API error: ' + err);
     }
