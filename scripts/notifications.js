@@ -36,7 +36,11 @@ function nonPersistentNotification(title, message) {
     }
 
     try {
-        var notification = new Notification(title);
+        var notification = new Notification(title, {
+          body: message,
+          icon: "../icons/logo-144.png"
+        });
+        return true;
     } catch (err) {
         console.log('Notification API error: ' + err);
         return false;
@@ -51,7 +55,6 @@ function persistentNotification(title, message) {
     }
     
     try {
-        console.log("try");
         navigator.serviceWorker.ready.then((registration) => {
             console.log("serviceworker.ready");
             registration.showNotification(title, {
@@ -59,13 +62,13 @@ function persistentNotification(title, message) {
                 icon: "../icons/logo-144.png"
             });
         });
-
         // console.log("try 2");
         // navigator.serviceWorker.getRegistration()
         //     .then((reg) => reg.showNotification("Hi there - persistent!"))
         //     .catch((err) => alert('Service Worker registration error: ' + err));
     } catch (err) {
       console.log('Notification API error: ' + err);
+      return false;
     }
 }
 // ############################################################################
