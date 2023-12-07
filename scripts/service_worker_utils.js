@@ -34,13 +34,18 @@ function createServiceWorker()
 }
 
 async function registerHourlyCheck() {
-    const registration = await navigator.serviceWorker.ready;
-    try {
-      await registration.periodicSync.register("custom-periodic-sync", {
-        minInterval: 2 * 60 * 1000,
-      });
-    } catch {
-      console.log("Periodic Sync could not be registered!");
+
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.ready.then((registration) => {
+            registration.periodicSync.register("custom-periodic-sync", {minInterval: 2 * 60 * 1000}).then((result) => 
+            {
+                console.log("periodic sync registered")
+                console.log(result)
+            })
+        }).catch((reason) => {
+            console.log("Periodic Sync could not be registered!");
+            console.log(reason)
+        });
     }
-  }
+}
   
