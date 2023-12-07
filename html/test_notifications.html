@@ -16,6 +16,12 @@
             window.registerServiceWorkerb = createServiceWorker
             window.getAServiceWorkerb = getAServiceWorker
         </script>
+        <script defer type="module">
+            import {getAServiceWorker} from '../scripts/service_worker_utils.js'
+            window.addEventListener('load', function() {
+                getAServiceWorker();
+            });
+        </script>
     </head>
     <body>
         <h1>InfoMétéo</h1>
