@@ -1,4 +1,4 @@
-export { call_notification, requestPermission, nonPersistentNotification, persistentNotification }
+export { call_notification, requestPermission, nonPersistentNotification, persistentNotification, registerServiceWorker }
 
 function call_notification(title, message)
 {
