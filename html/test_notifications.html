@@ -2,15 +2,25 @@
 <html>
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="manifest" href="infometeo.webmanifest" />
+        <link rel="manifest" href="../infometeo.webmanifest" />
         <script defer type="module" href="../scripts/notifications.js"></script>
+        <script defer type="module" href="../scripts/service_worker_utils.js"></script>
         <script defer type="module">
             import {call_notification, requestPermission, nonPersistentNotification, persistentNotification} from "../scripts/notifications.js"
+            import {getAServiceWorker, createServiceWorker} from '../scripts/service_worker_utils.js'
 
             window.requestPermissionb = requestPermission
             window.nonPersistentNotificationb = nonPersistentNotification
             window.persistentNotificationb = persistentNotification
             window.call_notificationb = call_notification
+            window.registerServiceWorkerb = createServiceWorker
+            window.getAServiceWorkerb = getAServiceWorker
+        </script>
+        <script defer type="module">
+            import {getAServiceWorker} from '../scripts/service_worker_utils.js'
+            window.addEventListener('load', function() {
+                getAServiceWorker();
+            });
         </script>
     </head>
     <body>
@@ -19,7 +29,9 @@
         <button onclick="requestPermissionb()">requestPermissionb</button>
         <button onclick="nonPersistentNotificationb()">nonPersistentNotificationb</button>
         <button onclick="persistentNotificationb()">persistentNotificationb</button>
-        <button onclick="call_notificationb()">call notifications</button>
+        <button onclick="call_notificationb('InfoMétéo', 'Notification')">call notifications</button>
+        <button onclick="registerServiceWorkerb()">registerServiceWorker</button>
+        <button onclick="getAServiceWorkerb()">getAServiceWorker</button>
 
     </body>
 </html>
