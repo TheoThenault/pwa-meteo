@@ -11,7 +11,7 @@ function call_notification(title, message)
 function registerServiceWorker()
 {
     if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('../scripts/service_worker.js')
+        navigator.serviceWorker.register('../scripts/service_worker.js', { scope: "../" })
           .then(function(registration) {
             console.log('Service Worker registered with scope:', registration.scope);
           })
