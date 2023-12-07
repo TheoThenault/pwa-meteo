@@ -33,6 +33,7 @@ function nonPersistentNotification() {
 }
 
 function persistentNotification() {
+    console.log("persistent notifs");
     if (!('Notification' in window) || !('ServiceWorkerRegistration' in window)) {
       alert('Persistent Notification API not supported!');
       return;
