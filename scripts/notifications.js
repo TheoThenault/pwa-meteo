@@ -11,7 +11,7 @@ function call_notification(title, message)
       success = persistentNotification(title, message)
       if(!success)
       {
-        alert("Erreur de notifications");
+        console.log("Erreur de notifications");
       }
     }
 }
@@ -55,7 +55,8 @@ function persistentNotification(title, message) {
         navigator.serviceWorker.ready.then((registration) => {
             console.log("serviceworker.ready");
             registration.showNotification(title, {
-                body: message
+                body: message,
+                icon: "../icons/logo-144.png"
             });
         });
 
