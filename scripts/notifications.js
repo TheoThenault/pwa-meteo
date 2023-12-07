@@ -40,11 +40,12 @@ function persistentNotification() {
     
     try {
         navigator.serviceWorker.ready.then((registration) => {
-        registration.showNotification("Vibration Sample", {
-            body: "Buzz! Buzz!",
-            vibrate: [200, 100, 200, 100, 200, 100, 200],
-            tag: "vibration-sample",
-        });
+            console.log("serviceworker.ready");
+            registration.showNotification("Vibration Sample", {
+                body: "Buzz! Buzz!",
+                vibrate: [200, 100, 200, 100, 200, 100, 200],
+                tag: "vibration-sample",
+            });
         });
     //   navigator.serviceWorker.getRegistration()
     //     .then((reg) => reg.showNotification("Hi there - persistent!"))
