@@ -2,10 +2,13 @@
 
 function getForecast()
 {
-    return new Promise(async () => {
+    return new Promise(async (resolve, reject) => {
         console.log("inside promise")
-        var res = await fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${LAT}&lon=${LON}&appid=${API_KEY}&units=metric`)
-        return res
+        var res = await fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${LAT}&lon=${LON}&appid=${API_KEY}&units=metric`)
+        //console.log(res)
+        var data = await res.json()
+        //console.log(data)
+        resolve(data)
     })
 }
 
@@ -24,7 +27,7 @@ function printDebug(forecast)
 function buttonCallback()
 {
     console.log("button clicked")
-    getForecast(true).then((forecast) => {
+    getForecast().then((forecast) => {
         console.log("get forecast result")
         printDebug(forecast)
         console.log(forecast);
