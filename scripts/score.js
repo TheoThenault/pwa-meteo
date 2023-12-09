@@ -1,7 +1,3 @@
-export {load_scores, save_scores, save_new_score, get_best_score, debugPrintScores}
-import {sauvegarder, lire} from "./localStorage.js"
-
-
 /* DEFINITIONS STRUCTURES 
 
     Définition de la structure des scores, ainsi que la liste contenant

@@ -1,5 +1,3 @@
-
-
 function getForecast()
 {
     return new Promise(async (resolve, reject) => {
@@ -15,10 +13,9 @@ function getForecast()
 
 // ########################################################
 // Fonction utilisées pour la page test_api.html
-document.getElementById("button").addEventListener("click", buttonCallback);
-console.log("JS")
+//document.getElementById("button").addEventListener("click", buttonCallback);
 
-function printDebug(forecast)
+function printDebug_API(forecast)
 {
     var log = document.getElementById("log");
     log.innerHTML += `<p>${forecast}</p>`;
@@ -29,7 +26,7 @@ function buttonCallback()
     console.log("button clicked")
     getForecast().then((forecast) => {
         console.log("get forecast result")
-        printDebug(forecast)
+        printDebug_API(forecast)
         console.log(forecast);
     })
 }

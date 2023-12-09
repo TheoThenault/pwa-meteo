@@ -3,12 +3,103 @@
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="manifest" href="../infometeo.webmanifest" />
-        <script defer src="../scripts/api.js"></script>
     </head>
     <body>
         <h1>InfoMétéo</h1>
 
-        <button id="button">5 day forcast</button>
-        <div id="log"></div>
+        <!-- API KEY STORE AND PRINT -->
+        <h2>Weather API Key</h2>
+        <input type="text" id="KEY">
+        <button id="storeKey">Store API KEY</button>
+        <p id="printKey"></p>
+        <!-- ####################### -->
+
+        <!-- GEOLOCATION GET AND PRINT -->
+        <h2>Geolocation</h2>
+        <button id="getGeoloc">Get Geolocation</button>
+        <p id="printGeoloc"></p>
+        <!-- ######################### -->
+
+        <!-- WEATHER API -->
+        <h2>Weather forecast</h2>
+        <button id="getForecast">5 day forcast</button>
+        <div id="printForecast"></div>
+        <!-- ########### -->
+    
+        <script src="../scripts/geolocalisation.js"></script>
+        <script src="../scripts/localStorage.js"></script>
+        <script src="../scripts/api.js"></script>
+        <script>
+            var btnStoreKey = document.getElementById("storeKey")
+            var btnGetGeoloc = document.getElementById("getGeoloc")
+            var btnGetForecast = document.getElementById("getForecast")
+
+            var pPrintKey = document.getElementById("printKey")
+            var pPrintGeoloc= document.getElementById("printGeoloc")
+            var pPrintForecast = document.getElementById("printForecast")
+
+            var textKey = document.getElementById("KEY")
+
+            var API_KEY = lire("OPENWEATHER_API_KEY")
+            if(!API_KEY)
+            {
+                pPrintKey.textContent = "NO API KEY"
+            }else{
+                pPrintKey.textContent = API_KEY
+            }
+
+            btnStoreKey.addEventListener("click", () => {
+                sauvegarder("OPENWEATHER_API_KEY", textKey.value)
+                API_KEY = textKey.value
+                pPrintKey.innerText = textKey.value
+            })
+
+            var LAT = 0
+            var LON = 0
+            btnGetGeoloc.addEventListener("click", () => {
+                var geolocPromise = getGeolocalisation(false)
+                if(!geolocPromise)
+                {
+                    console.log("EROR")
+                }else{
+                    console.log(geolocPromise)
+                    geolocPromise.then((result) => {
+                        console.log(result);
+                        try{
+                            LAT = result.coords.latitude
+                            LON = result.coords.longitude
+                            pPrintGeoloc.textContent = `Latitude:${LAT}    Longitude:${LON}`
+                        }catch (error){}
+                    })
+                }
+
+            })
+
+            btnGetForecast.addEventListener("click", () => {
+                getForecast().then((forecast) => {
+                    console.log(forecast)
+                    
+                    printForecast(forecast)
+
+                })
+            })
+
+            function printForecast(forecast)
+            {
+                
+                forecast_as_string  = `<p>Température ressentie: ${forecast.list[0].main.feels_like}</p>`
+                forecast_as_string += `<p>Pression ressentie: ${forecast.list[0].main.grnd_level}</p>`
+                forecast_as_string += `<p>Taux d'humidité: ${forecast.list[0].main.humidity}</p>`
+                forecast_as_string += `<p>Temps: ${forecast.list[0].weather[0].description}</p>`
+                forecast_as_string += `<p>Direction du vent: ${forecast.list[0].wind.deg}</p>`
+                forecast_as_string += `<p>Distance de visibilité: ${forecast.list[0].visibility}</p>`
+                forecast_as_string += `<p>Précipitations 3 heures (mm): ${forecast.list[0].rain["3h"]}</p>`
+                forecast_as_string += `<p>Levé du soleil: ${new Date(forecast.city.sunrise*1000).toString()}</p>`
+                forecast_as_string += `<p>Couché du soleil: ${new Date(forecast.city.sunset*1000).toString()}</p>`
+
+                pPrintForecast.innerHTML = forecast_as_string
+
+            }
+        </script>
     </body>
 </html>

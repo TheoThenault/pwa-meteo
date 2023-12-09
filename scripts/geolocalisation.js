@@ -9,25 +9,26 @@ function getGeolocalisation(shouldPrintDebug)
 {
     if("geolocation" in navigator)
     {
-        return new Promise(() => navigator.geolocation.getCurrentPosition((_location) => {
+        return new Promise((resolve, reject) => navigator.geolocation.getCurrentPosition((_location) => {
+            console.log(_location);
             if (shouldPrintDebug) {
-                console.log(_location);
-                printDebug(_location);
+                printDebug_GEOLOC(_location);
             }
-            return _location;
+            resolve(_location);
         }));
     }else{
         // Méssage d'érreur
         console.log("Geolocation not in navigator");
+        return false
     }
 }
 
 
 // ########################################################
 // Fonction utilisées pour la page test_geolocalisation.html
-document.getElementById("button").addEventListener("click", printGetGeolocalisation);
+// document.getElementById("button").addEventListener("click", printGetGeolocalisation);
 
-function printDebug(_location)
+function printDebug_GEOLOC(_location)
 {
     var log = document.getElementById("log");
     log.innerHTML += `<p>${_location.coords.latitude}   ${_location.coords.longitude}</p>`;
