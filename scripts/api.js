@@ -10,6 +10,19 @@ function getForecast()
     })
 }
 
+// Doesnt give same city name as forecast call
+// function getCityName()
+// {
+//     return new Promise(async (resolve, reject) => {
+//         console.log("inside promise")
+//         var res = await fetch(`https://api.openweathermap.org/geo/1.0/reverse?lat=${LAT}&lon=${LON}&appid=${API_KEY}`)
+//         //console.log(res)
+//         var data = await res.json()
+//         //console.log(data)
+//         resolve(data)
+//     })
+// }
+
 
 // ########################################################
 // Fonction utilisées pour la page test_api.html

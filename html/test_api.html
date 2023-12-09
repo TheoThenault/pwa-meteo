@@ -28,78 +28,8 @@
     
         <script src="../scripts/geolocalisation.js"></script>
         <script src="../scripts/localStorage.js"></script>
+        <script src="../scripts/forecast.js"></script>
         <script src="../scripts/api.js"></script>
-        <script>
-            var btnStoreKey = document.getElementById("storeKey")
-            var btnGetGeoloc = document.getElementById("getGeoloc")
-            var btnGetForecast = document.getElementById("getForecast")
-
-            var pPrintKey = document.getElementById("printKey")
-            var pPrintGeoloc= document.getElementById("printGeoloc")
-            var pPrintForecast = document.getElementById("printForecast")
-
-            var textKey = document.getElementById("KEY")
-
-            var API_KEY = lire("OPENWEATHER_API_KEY")
-            if(!API_KEY)
-            {
-                pPrintKey.textContent = "NO API KEY"
-            }else{
-                pPrintKey.textContent = API_KEY
-            }
-
-            btnStoreKey.addEventListener("click", () => {
-                sauvegarder("OPENWEATHER_API_KEY", textKey.value)
-                API_KEY = textKey.value
-                pPrintKey.innerText = textKey.value
-            })
-
-            var LAT = 0
-            var LON = 0
-            btnGetGeoloc.addEventListener("click", () => {
-                var geolocPromise = getGeolocalisation(false)
-                if(!geolocPromise)
-                {
-                    console.log("EROR")
-                }else{
-                    console.log(geolocPromise)
-                    geolocPromise.then((result) => {
-                        console.log(result);
-                        try{
-                            LAT = result.coords.latitude
-                            LON = result.coords.longitude
-                            pPrintGeoloc.textContent = `Latitude:${LAT}    Longitude:${LON}`
-                        }catch (error){}
-                    })
-                }
-
-            })
-
-            btnGetForecast.addEventListener("click", () => {
-                getForecast().then((forecast) => {
-                    console.log(forecast)
-                    
-                    printForecast(forecast)
-
-                })
-            })
-
-            function printForecast(forecast)
-            {
-                
-                forecast_as_string  = `<p>Température ressentie: ${forecast.list[0].main.feels_like}</p>`
-                forecast_as_string += `<p>Pression ressentie: ${forecast.list[0].main.grnd_level}</p>`
-                forecast_as_string += `<p>Taux d'humidité: ${forecast.list[0].main.humidity}</p>`
-                forecast_as_string += `<p>Temps: ${forecast.list[0].weather[0].description}</p>`
-                forecast_as_string += `<p>Direction du vent: ${forecast.list[0].wind.deg}</p>`
-                forecast_as_string += `<p>Distance de visibilité: ${forecast.list[0].visibility}</p>`
-                forecast_as_string += `<p>Précipitations 3 heures (mm): ${forecast.list[0].rain["3h"]}</p>`
-                forecast_as_string += `<p>Levé du soleil: ${new Date(forecast.city.sunrise*1000).toString()}</p>`
-                forecast_as_string += `<p>Couché du soleil: ${new Date(forecast.city.sunset*1000).toString()}</p>`
-
-                pPrintForecast.innerHTML = forecast_as_string
-
-            }
-        </script>
+        <script src="../scripts/test_api.html.js"></script>
     </body>
 </html>
