@@ -35,6 +35,17 @@ function save()
     printLocalStorage()
 }
 
+function save_quiz()
+{
+    var key   = document.getElementById("key").value
+    var value = 
+    document.getElementById("score").innerText = 
+
+    sauvegarder(key, value)
+
+    printLocalStorage()
+}
+
 function printLocalStorage()
 {
     var table = document.getElementById("tableau")
