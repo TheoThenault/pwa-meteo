@@ -96,6 +96,11 @@
     background-image: url("../img/score.svg");
 }
 
+p#score {
+    font-size: xx-large;
+    font-weight: bold;
+}
+
 .question_quiz{
     border: 0;
     line-height: 2;

@@ -184,7 +184,7 @@ submitButton.addEventListener("click", () => {
     // printScorePercent.textContent = score/10
 })
 
-// saveAnswerButton.addEventListener("click", () => {
-//     read_user_answers()
-//     save_quiz_game(USER_ANSWERS, !LOADED_PREVIOUS_SAVE)
-// })
+saveAnswerButton.addEventListener("click", () => {
+    read_user_answers()
+    save_quiz_game(USER_ANSWERS, !LOADED_PREVIOUS_SAVE)
+})
