@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="manifest" href="../infometeo.webmanifest" />
+    </head>
+    <body>
+        <h1>InfoMétéo</h1>
+
+        <!-- API KEY STORE AND PRINT -->
+        <h2>Weather API Key</h2>
+        <input type="text" id="KEY">
+        <button id="storeKey">Store API KEY</button>
+        <p id="printKey"></p>
+        <!-- ####################### -->
+
+        <!-- GEOLOCATION GET AND PRINT -->
+        <h2>Geolocation</h2>
+        <button id="getGeoloc">Get Geolocation</button>
+        <p id="printGeoloc"></p>
+        <!-- ######################### -->
+
+        <!-- WEATHER API -->
+        <h2>Weather forecast</h2>
+        <button id="getForecast">5 day forcast</button>
+        <div id="printForecast"></div>
+        <!-- ########### -->
+    
+        <script src="../scripts/geolocalisation.js"></script>
+        <script src="../scripts/localStorage.js"></script>
+        <script src="../scripts/forecast.js"></script>
+        <script src="../scripts/api.js"></script>
+        <script src="../scripts/test_api.html.js"></script>
+    </body>
+</html>
