@@ -105,7 +105,6 @@ function find_closest_forecast()
             console.log(city.forecasts[closest_index])
             // return forecast
             return city.forecasts[closest_index]
-            console.log("forecast_foundazekjazeauzeiahzea")
         }
     }
 
@@ -120,7 +119,7 @@ function find_closest_forecast_in_list(list)
     for (let index = 0; index < list.length; index++) {
         const forecast = list[index];
         var diff_with_current = Math.abs(forecast.dt - current_date_time)
-        var diff_with_closest = Math.abs(list[closest_index] - current_date_time)
+        var diff_with_closest = Math.abs(list[closest_index].dt - current_date_time)
         if(diff_with_current < diff_with_closest)
         {
             closest_index = index
@@ -131,10 +130,14 @@ function find_closest_forecast_in_list(list)
 
 function delete_all_obselete_forecast()
 {
-    LIST_FORECAST.filter(function(city) {
+    LIST_FORECAST = LIST_FORECAST.filter(function(city) {
         var closest_index = find_closest_forecast_in_list(city.forecasts)
         var current_date_time = Math.floor(new Date().getTime()/1000.0)
-        var diff_with_closest = Math.abs(city.forecasts[closest_index] - current_date_time)
+        var diff_with_closest = Math.abs(city.forecasts[closest_index].dt - current_date_time)
+        console.log(diff_with_closest)
+        console.log(city.forecasts[closest_index])
+        console.log(closest_index)
+        console.log(Math.abs(city.forecasts[closest_index].dt - current_date_time))
         // Keep only if closest forecast is less than 3 hour old
         return diff_with_closest < 3 * 3600
     })

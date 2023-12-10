@@ -28,8 +28,7 @@ btnStoreKey.addEventListener("click", () => {
 var LAT = -1
 var LON = -1
 
-function getgeo()
-{
+btnGetGeoloc.addEventListener("click", () => {
     var geolocPromise = getGeolocalisation(false)
     if(!geolocPromise)
     {
@@ -45,12 +44,6 @@ function getgeo()
             }catch (error){}
         })
     }
-}
-
-getgeo()
-
-btnGetGeoloc.addEventListener("click", () => {
-    getgeo()
 })
 
 function callgetForecast()
@@ -119,14 +112,39 @@ function printForecastFromLocal(forecast)
 
 }
 
-
-var closest_forecast = find_closest_forecast()
-//console.log(closest_forecast)
-if(!closest_forecast)
+function onLoadGetForecast()
 {
-    callgetForecast()
-}else{
-    console.log("LOAD FROM LOCAL")
-    //console.log(closest_forecast)
-    printForecastFromLocal(closest_forecast)
+    return new Promise(async (resolve, reject) => {
+        var geolocPromise = getGeolocalisation(false)
+        if(!geolocPromise)
+        {
+            reject("noGeolocPromise")
+        }
+
+        var geolocation = await geolocPromise;
+        try{
+            LAT = geolocation.coords.latitude
+            LON = geolocation.coords.longitude
+            pPrintGeoloc.textContent = `Latitude:${LAT}    Longitude:${LON}`
+        }catch (error){
+            reject([error, geolocation])
+        }
+
+        var closest_forecast = find_closest_forecast()
+        //console.log(closest_forecast)
+        if(!closest_forecast)
+        {
+            callgetForecast()
+        }else{
+            console.log("LOAD FROM LOCAL")
+            //console.log(closest_forecast)
+            printForecastFromLocal(closest_forecast)
+        }
+    })
 }
+
+onLoadGetForecast().then(() => {
+    console.log("Forecast OK")
+}).catch((error) => {
+    console.log(error)
+})
