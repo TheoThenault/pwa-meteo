@@ -9,7 +9,8 @@ var inputSunrise = document.getElementById("inputSunrise")
 var inputSunset = document.getElementById("inputSunset")
 var submitButton = document.getElementById("submitButton")
 var saveAnswerButton = document.getElementById("saveAnswerButton")
-var printScore = document.getElementById("printScore")
+var printScore = document.getElementById("precision_score")
+// var printScorePercent = document.getElementById("pourcentage_score")
 
 load_forecast_list()
 load_scores()
@@ -179,10 +180,11 @@ submitButton.addEventListener("click", () => {
     console.log(score)
     save_new_score(score)
 
-    printScore.textContent = `Votre score est: ${score}`
+    printScore.textContent = score
+    // printScorePercent.textContent = score/10
 })
 
-saveAnswerButton.addEventListener("click", () => {
-    read_user_answers()
-    save_quiz_game(USER_ANSWERS, !LOADED_PREVIOUS_SAVE)
-})
+// saveAnswerButton.addEventListener("click", () => {
+//     read_user_answers()
+//     save_quiz_game(USER_ANSWERS, !LOADED_PREVIOUS_SAVE)
+// })
