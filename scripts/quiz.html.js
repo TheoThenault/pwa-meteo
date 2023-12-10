@@ -8,6 +8,7 @@ var inputRain = document.getElementById("inputRain")
 var inputSunrise = document.getElementById("inputSunrise")
 var inputSunset = document.getElementById("inputSunset")
 var submitButton = document.getElementById("submitButton")
+var printScore = document.getElementById("printScore")
 
 load_forecast_list()
 load_scores()
@@ -136,4 +137,6 @@ submitButton.addEventListener("click", () => {
     var score = calculate_score(USER_ANSWERS, QUIZ_ANSWERS)
     console.log(score)
     save_new_score(score)
+
+    printScore.textContent = `Votre score est: ${score}`
 })
