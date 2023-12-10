@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- We import APIKEY.css for style of page-->
+        <link rel="stylesheet" href="../styles/APIKEY.css">
+        <link rel="manifest" href="../infometeo.webmanifest" />
+        <script src="../scripts/localStorage.js"></script>
+        <script>
+    
+            var API_KEY = lire("OPENWEATHER_API_KEY")
+            if(!API_KEY)
+            {
+                console.log("NO API KEY")
+            }else{
+                console.log(`API KEY OK : ${API_KEY}`)
+                window.location = "./quiz.html"
+            }
+        </script>
+    </head>
+    <body class="body_APIKEY">
+        <!-- The header will indicate this page is for enter his own API KEY-->
+        <header class="header_APIKEY">
+            <!--It contains a burger menu-->
+            <div class="burger_menu_APIKEY">
+                <div class="bar_burger_menu"></div>
+                <div class="bar_burger_menu"></div>
+                <div class="bar_burger_menu"></div>
+            </div>
+
+            <!--It contains a title-->
+            <h1 class="title_APIKEY">API KEY</h1>
+        </header>
+
+        <!-- Il est necessaire de rentrer une clé pour parler avec l'API -->
+        <article>
+            <section ID="section_APIKEY">
+                <p class="question_APIKEY">
+                    Veuillez enter votre clé API
+                </p>
+                <input type="text" class="input_text_APIKEY" id="textKey">
+                <div class="button_group_APIKEY">
+                    <a href="../index.html">
+                        <button class="button_APIKEY" id="storeAPIKEY">
+                            Envoyer
+                        </button>
+                    </a>
+                </div>
+            </section>
+        </article>
+
+
+    <script>
+        var textKey = document.getElementById("textKey")
+        document.getElementById("storeAPIKEY").addEventListener("click", () => {
+            sauvegarder("OPENWEATHER_API_KEY", textKey.value)
+            API_KEY = textKey.value
+        })
+
+    </script>
+
+
+    </body>
+</html>
