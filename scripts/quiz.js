@@ -48,13 +48,13 @@ function does_save_exist()
     return false
 }
 
-function save_quiz_game(write_datetime)
+function save_quiz_game(answers, write_datetime)
 {
     if(write_datetime){
-        QUIZ_SAVE.dt = new Date().toISOString()
+        answers.dt = new Date().toISOString()
     }
 
-    sauvegarder("QUIZ_SAVE", JSON.stringify(QUIZ_SAVE));
+    sauvegarder("QUIZ_SAVE", JSON.stringify(answers));
 }
 
 function calculate_score(user, real)

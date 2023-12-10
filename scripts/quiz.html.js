@@ -8,11 +8,15 @@ var inputRain = document.getElementById("inputRain")
 var inputSunrise = document.getElementById("inputSunrise")
 var inputSunset = document.getElementById("inputSunset")
 var submitButton = document.getElementById("submitButton")
+var saveAnswerButton = document.getElementById("saveAnswerButton")
 var printScore = document.getElementById("printScore")
 
 load_forecast_list()
 load_scores()
 
+
+var QUIZ_ANSWERS = {}
+var USER_ANSWERS = {}
 var API_KEY = lire("OPENWEATHER_API_KEY")
 if(!API_KEY)
 {
@@ -21,9 +25,16 @@ if(!API_KEY)
     console.log(`API KEY OK : ${API_KEY}`)
 }
 
+var LOADED_PREVIOUS_SAVE = false
+var save_exist = does_save_exist()
+console.log(`does save exist: ${save_exist}`)
+if(save_exist)
+{
+    LOADED_PREVIOUS_SAVE = true
+    console.log(QUIZ_SAVE)
+    load_answer(QUIZ_SAVE)
+}
 
-QUIZ_ANSWERS = {}
-USER_ANSWERS = {}
 
 function onLoadGetForecast()
 {
@@ -132,6 +143,36 @@ function read_user_answers()
     console.log(USER_ANSWERS)
 }
 
+function load_answer(answer)
+{
+    if(answer.temp)
+        inputTemp.value = answer.temp
+
+    if(answer.pressure)
+        inputPressure.value = answer.pressure
+
+    if(answer.humidity)
+        inputHumidity.value = answer.humidity
+
+    if(answer.weather)
+        inputWeather.value = answer.weather
+
+    if(answer.wind)
+        inputWind.value = answer.wind
+
+    if(answer.visibility)
+        inputVisibility.value = answer.visibility
+
+    if(answer["rain_3h"])
+        inputRain.value = answer["rain_3h"]
+
+    if(answer.sunrise)
+        inputSunrise.value = answer.sunrise
+
+    if(answer.sunset)
+        inputSunset.value = answer.sunset
+}
+
 submitButton.addEventListener("click", () => {
     read_user_answers()
     var score = calculate_score(USER_ANSWERS, QUIZ_ANSWERS)
@@ -139,4 +180,9 @@ submitButton.addEventListener("click", () => {
     save_new_score(score)
 
     printScore.textContent = `Votre score est: ${score}`
+})
+
+saveAnswerButton.addEventListener("click", () => {
+    read_user_answers()
+    save_quiz_game(USER_ANSWERS, !LOADED_PREVIOUS_SAVE)
 })
