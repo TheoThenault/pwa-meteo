@@ -1,0 +1,90 @@
+.header_APIKEY{
+    display: flex;
+    position: fixed;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    margin: 0;
+    background-color: lightblue;
+}
+
+.bar_burger_menu{
+    height: 5px;
+    margin-top: 1px;
+    margin-bottom: 1px;
+    background-color: black;
+}
+
+.burger_menu_APIKEY{
+    height: 21px;
+    margin-right: 0.5dvh;
+    width: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.title_APIKEY{
+    height: 10dvh;
+    margin-top: 0;
+    margin-bottom: 0;
+    width: 90dvw;
+    font-size: 10dvh;
+    text-align: center;
+}
+
+.input_text_APIKEY,
+.button_APIKEY {
+    border: 0;
+    line-height: 2;
+    padding-top: 2dvh;
+    padding-left: 2dvw;
+    padding-bottom: 2dvh;
+    padding-right: 2dvw;
+    border-radius: 30px;
+    font-size: 1rem;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    text-align: center;
+    color: #fff;
+    text-shadow: 1px 1px 1px #000;
+    background-color: red;
+}
+
+.input_text_APIKEY:hover,
+.button_APIKEY:hover {
+    background-color: yellow
+}
+
+.input_text_APIKEY:active,
+.button_APIKEY:active {
+    background-color: grey
+}
+
+.question_APIKEY{
+    border: 0;
+    line-height: 2;
+    padding-top: 2dvh;
+    padding-left: 2dvw;
+    padding-bottom: 2dvh;
+    padding-right: 2dvw;
+    border-radius: 20px;
+    font-size: 30px;
+    text-align: center;
+    color: #fff;
+    text-shadow: 1px 1px 1px #000;
+    background-color: red;
+}
+
+#section_APIKEY{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    height: 96dvh;
+    visibility: visible;
+}
+
+#section_APIKEY{
+    background-image: url("../img/APIKEY.svg");
+}
