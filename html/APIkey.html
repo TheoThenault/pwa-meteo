@@ -5,6 +5,18 @@
         <!-- We import APIKEY.css for style of page-->
         <link rel="stylesheet" href="../styles/APIKEY.css">
         <link rel="manifest" href="../infometeo.webmanifest" />
+        <script src="../scripts/localStorage.js"></script>
+        <script>
+    
+            var API_KEY = lire("OPENWEATHER_API_KEY")
+            if(!API_KEY)
+            {
+                console.log("NO API KEY")
+            }else{
+                console.log(`API KEY OK : ${API_KEY}`)
+                window.location = "./quiz.html"
+            }
+        </script>
     </head>
     <body class="body_APIKEY">
         <!-- The header will indicate this page is for enter his own API KEY-->
@@ -37,18 +49,8 @@
             </section>
         </article>
 
-    <script src="../scripts/localStorage.js"></script>
+
     <script>
-
-        var API_KEY = lire("OPENWEATHER_API_KEY")
-        if(!API_KEY)
-        {
-            console.log("NO API KEY")
-        }else{
-            console.log(`API KEY OK : ${API_KEY}`)
-            window.location = "./quiz.html"
-        }
-
         var textKey = document.getElementById("textKey")
         document.getElementById("storeAPIKEY").addEventListener("click", () => {
             sauvegarder("OPENWEATHER_API_KEY", textKey.value)
