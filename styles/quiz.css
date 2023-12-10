@@ -88,6 +88,14 @@
     background-image: url("../img/sunset.svg");
 }
 
+#question_begin{
+    background-image: url("../img/begin.svg");
+}
+
+#section_score{
+    background-image: url("../img/score.svg");
+}
+
 .question_quiz{
     border: 0;
     line-height: 2;
@@ -100,7 +108,7 @@
     text-align: center;
     color: #fff;
     text-shadow: 1px 1px 1px #000;
-    background-color: lightgreen;
+    background-color: red;
 }
 
 .input_number_quiz,
@@ -120,14 +128,14 @@
     text-align: center;
     color: #fff;
     text-shadow: 1px 1px 1px #000;
-    background-color: lightgreen;
+    background-color: red;
 }
 
 .input_number_quiz:hover,
 .input_range_quiz:hover,
 .input_time_quiz:hover,
 .button_quiz:hover {
-    background-color: green
+    background-color: yellow
 }
 
 .input_number_quiz:active,
