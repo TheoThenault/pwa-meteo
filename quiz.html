@@ -9,22 +9,22 @@
         <p>
             Quelle est la temperature ressentie ?
         </p>
-        <input type="number">
+        <input type="number" id="inputTemp">
 
         <p>
             Quelle est la pression ressentie ?
         </p>
-        <input type="number">
+        <input type="number" id="inputPressure">
 
         <p>
             Quel est le taux d'humidité ?
         </p>
-        <input type="range" min="0" max="100">
+        <input type="range" min="0" max="100" id="inputHumidity">
 
         <p>
             Description du climat
         </p>
-        <input type="text" list="climat_desc">
+        <input type="text" list="climat_desc" id="inputWeather">
         <datalist id="climat_desc">
             <option value="clear sky"></option>
             <option value="few clouds"></option>
@@ -40,29 +40,29 @@
         <p>
             Quelle est la direction du vent ?
         </p>
-        <input type="range" min="0" max="360">
+        <input type="range" min="0" max="360" id="inputWind">
 
         <p>
             Quelle est la distance de Visibilité ? (maximum 10km)
         </p>
-        <input type="range" min="0" max="10000">
+        <input type="range" min="0" max="10000" id="inputVisibility">
 
         <p>
             Queles sont les precipitations ? (en mm)
         </p>
-        <input type="number">
+        <input type="number" id="inputRain">
 
         <p>
             A quelle heure le soleil se lève ?
         </p>
-        <input type="time">
+        <input type="time" id="inputSunrise">
 
         <p>
             Coucher du soleil
         </p>
-        <input type="time">
+        <input type="time" id="inputSunset">
 
-        <button>
+        <button id="submitButton">
             Submit
         </button>
 

@@ -57,9 +57,81 @@ function save_quiz_game(write_datetime)
     sauvegarder("QUIZ_SAVE", JSON.stringify(QUIZ_SAVE));
 }
 
-function calculate_score(answers)
+function calculate_score(user, real)
 {
+    base_score = 850
+    user_score = base_score
+    if(isNaN(user.temp)){
+        user_score -= 100
+    }else{
+        user_score -= percentOf(user.temp, real.temp)
+    }
+
+    if(isNaN(user.pressure)){
+        user_score -= 100
+    }else{
+        user_score -= percentOf(user.pressure, real.pressure)
+    }
+
+    if(isNaN(user["rain_3h"])){
+        user_score -= 100
+    }else{
+        user_score -= percentOf(user["rain_3h"], real["rain_3h"])
+    }
+
+    if(isNaN(user.humidity)){
+        user_score -= 100
+    }else{
+        user_score -= percentOf(user.humidity, real.humidity)
+    }
+
+    if(isNaN(user.wind_dir)){
+        user_score -= 100
+    }else{
+        user_score -= percentOf(user.wind_dir, real.wind_dir)
+    }
     
+    if(isNaN(user.visibility)){
+        user_score -= 100
+    }else{
+        user_score -= percentOf(user.visibility, real.visibility)
+    }
+    
+    if(user.weather !== real.weather){
+        user_score -= 50
+    }
+    
+    if(isNaN(user.sunrise)){
+        user_score -= 100
+    }else{
+        user_score -= compareHHMM(user.sunrise, real.sunrise)
+    }
+    
+    if(isNaN(user.sunset)){
+        user_score -= 100
+    }else{
+        user_score -= compareHHMM(user.sunset, real.sunset)
+    }
+
+    return Math.ceil(user_score/base_score*1000)
+}
+
+function compareHHMM(user, real)
+{
+    var u = user.split(":")
+    var r = real.split(":")
+
+    var u_as_minutes = u[0] * 60 + u[1] 
+    var r_as_minutes = r[0] * 60 + r[1] 
+
+    return percentOf(u_as_minutes, r_as_minutes)
+}
+
+function percentOf(user, real)
+{
+    var diff = Math.abs(user - real)
+    var percent = diff/real * 100
+    return Math.floor(Math.min(100, percent))
 }
 
 function sameDay()
