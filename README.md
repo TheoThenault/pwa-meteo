@@ -1,6 +1,6 @@
 # pwa-meteo
 PWA Météo
 
-Pour jouer au quiz InfoMétéo il vous faudrat une clef API OpenWeather.
+Pour jouer au quiz InfoMétéo il vous faudra une clef API OpenWeather.
 
-Elle vous sera demander avant votre première partie.
+Elle vous sera demandée avant votre première partie.
