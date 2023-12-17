@@ -9,8 +9,26 @@ var inputSunrise = document.getElementById("inputSunrise")
 var inputSunset = document.getElementById("inputSunset")
 var submitButton = document.getElementById("submitButton")
 var saveAnswerButton = document.getElementById("saveAnswerButton")
+
 var printScore = document.getElementById("precision_score")
-// var printScorePercent = document.getElementById("pourcentage_score")
+var printPlayerTemperatureScore = document.getElementById("response_temperature").querySelector(".player_response")
+var printBestTemperatureScore = document.getElementById("response_temperature").querySelector(".best_response")
+var printPlayerPressureScore = document.getElementById("response_pressure").querySelector(".player_response")
+var printBestPressureScore = document.getElementById("response_pressure").querySelector(".best_response")
+var printPlayerHumidityScore = document.getElementById("response_humidity").querySelector(".player_response")
+var printBestHumidityScore = document.getElementById("response_humidity").querySelector(".best_response")
+var printPlayerClimatScore = document.getElementById("response_climat").querySelector(".player_response")
+var printBestClimatScore = document.getElementById("response_climat").querySelector(".best_response")
+var printPlayerWindScore = document.getElementById("response_wind").querySelector(".player_response")
+var printBestWindScore = document.getElementById("response_wind").querySelector(".best_response")
+var printPlayerVisibilityScore = document.getElementById("response_visibility").querySelector(".player_response")
+var printBestVisibilityScore = document.getElementById("response_visibility").querySelector(".best_response")
+var printPlayerPrecipitationScore = document.getElementById("response_precipitation").querySelector(".player_response")
+var printBestPrecipitationScore = document.getElementById("response_precipitation").querySelector(".best_response")
+var printPlayerSunriseScore = document.getElementById("response_sunrise").querySelector(".player_response")
+var printBestSunriseScore = document.getElementById("response_sunrise").querySelector(".best_response")
+var printPlayerSunsetScore = document.getElementById("response_sunset").querySelector(".player_response")
+var printBestSunsetScore = document.getElementById("response_sunset").querySelector(".best_response")
 
 load_forecast_list()
 load_scores()
@@ -111,7 +129,6 @@ function forecast_to_answers(forecast)
         "sunrise": date_to_hhmm(new Date(forecast.sunrise*1000)),
         "sunset": date_to_hhmm(new Date(forecast.sunset*1000))
     }
-
     console.log(QUIZ_ANSWERS)
 }
 
@@ -129,6 +146,7 @@ onLoadGetForecast().then(() => {
 
 function read_user_answers()
 {
+    console.log(inputWeather.value)
     USER_ANSWERS = {
         "temp":       parseFloat(inputTemp.value),
         "pressure":   parseInt(inputPressure.value),
@@ -181,7 +199,25 @@ submitButton.addEventListener("click", () => {
     save_new_score(score)
 
     printScore.textContent = score
-    // printScorePercent.textContent = score/10
+    console.log(printPlayerTemperatureScore)
+    printPlayerTemperatureScore.textContent += USER_ANSWERS["temp"]
+    printBestTemperatureScore.textContent += QUIZ_ANSWERS["temp"]
+    printPlayerPressureScore.textContent += USER_ANSWERS["pressure"]
+    printBestPressureScore.textContent += QUIZ_ANSWERS["pressure"]
+    printPlayerHumidityScore.textContent += USER_ANSWERS["humidity"]
+    printBestHumidityScore.textContent += QUIZ_ANSWERS["humidity"]
+    printPlayerClimatScore.textContent += USER_ANSWERS["weather"]
+    printBestClimatScore.textContent += QUIZ_ANSWERS["weather"]
+    printPlayerWindScore.textContent += USER_ANSWERS["wind_dir"]
+    printBestWindScore.textContent += QUIZ_ANSWERS["wind_dir"]
+    printPlayerVisibilityScore.textContent += USER_ANSWERS["visibility"]
+    printBestVisibilityScore.textContent += QUIZ_ANSWERS["visibility"]
+    printPlayerPrecipitationScore.textContent += USER_ANSWERS["rain_3h"]
+    printBestPrecipitationScore.textContent += QUIZ_ANSWERS["rain_3h"]
+    printPlayerSunriseScore.textContent += USER_ANSWERS["sunrise"]
+    printBestSunriseScore.textContent += QUIZ_ANSWERS["sunrise"]
+    printPlayerSunsetScore.textContent += USER_ANSWERS["sunset"]
+    printBestSunsetScore.textContent += QUIZ_ANSWERS["sunset"]
 })
 
 saveAnswerButton.addEventListener("click", () => {

@@ -4,17 +4,13 @@
         <!-- We import quiz.css for style of page-->
         <link rel="stylesheet" href="../styles/quiz.css">
         <link rel="manifest" href="../infometeo.webmanifest" />
+        <link type="text/javascript" href="../scripts/link.js">
+        <script src="../scripts/link.js"></script>
     </head>
 
     <body class="body_quiz">
         <!-- The header will indicate this page is a quiz-->
         <header class="header_quiz">
-            <!--It contains a burger menu-->
-            <div class="burger_menu_quiz">
-                <div class="bar_burger_menu"></div>
-                <div class="bar_burger_menu"></div>
-                <div class="bar_burger_menu"></div>
-            </div>
 
             <!--It contains a title-->
             <h1 class="title_quiz">Quiz météo</h1>
@@ -25,11 +21,18 @@
 
             <!--First section let user begin the quiz-->
             <section id="question_begin" class="section_quiz">
-                <a href="#question_temperature">
-                    <button class="button_quiz">
-                        Commencer le quiz
-                    </button>
-                </a>
+                <div>
+                    <a class="link_question_temperature" href="#question_temperature">
+                        <button class="button_quiz">
+                            Commencer le quiz
+                        </button>
+                    </a>
+                    <a href="./accueil.html">
+                        <button class="button_quiz">
+                            Allez directement à la page d'accueil
+                        </button>
+                    </a>
+                </div>
             </section>
 
             <!--Then there are eight sections who represent the questions-->
@@ -38,14 +41,14 @@
                 <p class="question_quiz">
                     Quelle est la temperature ressentie ?
                 </p>
-                <input type="number" class="input_number_quiz" id="inputTemp">
+                <input type="number" class="input_number_quiz" id="inputTemp" value="0">
                 <div class="button_group_quiz">
-                    <a href="#question_begin">
+                    <a class="link_question_begin" href="#question_begin">
                         <button class="button_quiz" id="saveAnswerButton">
                             Sauvegarder et partir
                         </button>
                     </a>
-                    <a href="#question_pressure">
+                    <a class="link_question_pressure" href="#question_pressure">
                         <button class="button_quiz">
                             Question suivante
                         </button>
@@ -58,14 +61,14 @@
                 <p class="question_quiz">
                     Quelle est la pression ressentie ?
                 </p>
-                <input type="number" class="input_number_quiz" id="inputPressure">
+                <input type="number" class="input_number_quiz" id="inputPressure" value="0">
                 <div class="button_group_quiz">
-                    <a href="#question_temperature">
+                    <a class="link_question_temperature" href="#question_temperature">
                         <button class="button_quiz">
                             Question précédante
                         </button>
                     </a>
-                    <a href="#question_humidity">
+                    <a class="link_question_humidity" href="#question_humidity">
                         <button class="button_quiz">
                             Question suivante
                         </button>
@@ -78,14 +81,14 @@
                 <p class="question_quiz">
                     Quel est le taux d'humidité ?
                 </p>
-                <input type="range" class="input_range_quiz" min="0" max="100" id="inputHumidity">
+                <input type="number" class="input_number_quiz" min="0" max="100" id="inputHumidity" value="0">
                 <div class="button_group_quiz">
-                    <a href="#question_pressure">
+                    <a class="link_question_pressure" href="#question_pressure">
                         <button class="button_quiz">
                             Question précédante
                         </button>
                     </a>
-                    <a href="#question_climat">
+                    <a class="link_question_climat" href="#question_climat">
                         <button class="button_quiz">
                             Question suivante
                         </button>
@@ -98,25 +101,24 @@
                 <p class="question_quiz">
                     Description du climat
                 </p>
-                <input type="text" list="climat_desc" id="inputWeather">
-                <datalist id="climat_desc">
-                    <option value="clear sky"></option>
-                    <option value="few clouds"></option>
-                    <option value="scattered clouds"></option>
-                    <option value="broken clouds"></option>
-                    <option value="shower rain"></option>
-                    <option value="rain"></option>
-                    <option value="thunderstorm"></option>
-                    <option value="snow"></option>
-                    <option value="mist"></option>
-                </datalist>
+                <select id="inputWeather" value="clear sky">
+                    <option value="clear sky">clear sky</option>
+                    <option value="few clouds">few clouds</option>
+                    <option value="scattered clouds">scattered clouds</option>
+                    <option value="broken clouds">broken clouds</option>
+                    <option value="shower rain">shower rain</option>
+                    <option value="rain">rain</option>
+                    <option value="thunderstorm">thunderstorm</option>
+                    <option value="snow">snow</option>
+                    <option value="mist">mist</option>
+                </select>
                 <div class="button_group_quiz">
-                    <a href="#question_humidity">
+                    <a class="link_question_humidity" href="#question_humidity">
                         <button class="button_quiz">
                             Question précédante
                         </button>
                     </a>
-                    <a href="#question_wind">
+                    <a class="link_question_wind" href="#question_wind">
                         <button class="button_quiz">
                             Question suivante
                         </button>
@@ -129,14 +131,14 @@
                 <p class="question_quiz">
                     Quelle est la direction du vent ?
                 </p>
-                <input type="range" class="input_range_quiz" min="0" max="360" id="inputWind">
+                <input type="number" class="input_number_quiz" min="0" max="360" id="inputWind" value="0">
                 <div class="button_group_quiz">
-                    <a href="#question_climat">
+                    <a class="link_question_climat" href="#question_climat">
                         <button class="button_quiz">
                             Question précédante
                         </button>
                     </a>
-                    <a href="#question_visibility">
+                    <a class="link_question_visibility" href="#question_visibility">
                         <button class="button_quiz">
                             Question suivante
                         </button>
@@ -149,14 +151,14 @@
                 <p class="question_quiz">
                     Quelle est la distance de Visibilité ? (maximum 10km)
                 </p>
-                <input type="range" class="input_range_quiz" min="0" max="10000" id="inputVisibility">
+                <input type="number" class="input_number_quiz" min="0" max="10000" id="inputVisibility" value="0">
                 <div class="button_group_quiz">
-                    <a href="#question_wind">
+                    <a class="link_question_wind" href="#question_wind">
                         <button class="button_quiz">
                             Question précédante
                         </button>
                     </a>
-                    <a href="#question_precipitation">
+                    <a class="link_question_precipitation" href="#question_precipitation">
                         <button class="button_quiz">
                             Question suivante
                         </button>
@@ -169,14 +171,14 @@
                 <p class="question_quiz">
                     Queles sont les precipitations ? (en mm)
                 </p>
-                <input type="number" class="input_number_quiz" id="inputRain">
+                <input type="number" class="input_number_quiz" id="inputRain" value="1" min="1">
                 <div class="button_group_quiz">
-                    <a href="#question_visibility">
+                    <a class="link_question_visibility" href="#question_visibility">
                         <button class="button_quiz">
                             Question précédante
                         </button>
                     </a>
-                    <a href="#question_sunrise">
+                    <a class="link_question_sunrise" href="#question_sunrise">
                         <button class="button_quiz">
                             Question suivante
                         </button>
@@ -189,14 +191,14 @@
                 <p class="question_quiz">
                     A quelle heure le soleil se lève ?
                 </p>
-                <input type="time" class="input_time_quiz" id="inputSunrise">
+                <input type="time" class="input_time_quiz" id="inputSunrise" value="00:00">
                 <div class="button_group_quiz">
-                    <a href="#question_precipitation">
+                    <a class="link_question_precipitation" href="#question_precipitation">
                         <button class="button_quiz">
                             Question précédante
                         </button>
                     </a>
-                    <a href="#question_sunset">
+                    <a class="link_question_sunset" href="#question_sunset">
                         <button class="button_quiz">
                             Question suivante
                         </button>
@@ -209,14 +211,14 @@
                 <p class="question_quiz">
                     A quelle heure le soleil se couche ?
                 </p>
-                <input type="time" class="input_time_quiz" id="inputSunset">
+                <input type="time" class="input_time_quiz" id="inputSunset" value="00:00">
                 <div class="button_group_quiz">
-                    <a href="#question_sunrise">
+                    <a class="link_question_sunrise" href="#question_sunrise">
                         <button class="button_quiz">
                             Question précédante
                         </button>
                     </a>
-                    <a href="#section_score">
+                    <a class="link_score" href="#section_score">
                         <button class="button_quiz" id="submitButton">
                             Envoyer
                         </button>
@@ -229,34 +231,41 @@
                 <p id="score">
                     Mon score : 
                     <b id="precision_score"></b>
-                    <!--<b id="pourcentage_score"></b>-->
                 </p>
-                <a href="#response_temperature">
+                <a class="link_response_temperature" href="#response_temperature">
                     <button class="button_quiz">
                         Voir mes réponses
                     </button>
                 </a>
             </section>
 
-            <!--FThen we have again eight section to 
+            <!--Then we have again eight section to 
                 show all response for each question-->
             <!-- Temperature around -->
             <section id="response_temperature" class="section_quiz">
                 <p class="question_quiz">
                     Quelle est la temperature ressentie ?
                 </p>
+                <div class="response_quiz">
+                    <p class="player_response">
+                        <b>Ma réponse :</b>
+                    </p>
+                    <p class="best_response">
+                        <b>La bonne réponse :</b>
+                    </p>
+                </div>
                 <div class="button_group_quiz">
-                    <a href="#response_pressure">
+                    <a class="link_response_pressure" href="#response_pressure">
                         <button class="button_quiz">
                             Question suivante
                         </button>
                     </a>
-                    <a href="#section_score">
+                    <a class="link_score" href="#section_score">
                         <button class="button_quiz">
                             Retourner à mon score
                         </button>
                     </a>
-                    <a href="">
+                    <a href="./accueil.html">
                         <button class="button_quiz">
                             Retourner à l'accueil
                         </button>
@@ -269,23 +278,31 @@
                 <p class="question_quiz">
                     Quelle est la pression ressentie ?
                 </p>
+                <div class="response_quiz">
+                    <p class="player_response">
+                        <b>Ma réponse :</b>
+                    </p>
+                    <p class="best_response">
+                        <b>La bonne réponse :</b>
+                    </p>
+                </div>
                 <div class="button_group_quiz">
-                    <a href="#response_temperature">
+                    <a class="link_response_temperature" href="#response_temperature">
                         <button class="button_quiz">
                             Question précédante
                         </button>
                     </a>
-                    <a href="#response_humidity">
+                    <a class="link_response_humidity" href="#response_humidity">
                         <button class="button_quiz">
                             Question suivante
                         </button>
                     </a>
-                    <a href="#section_score">
+                    <a class="link_score" href="#section_score">
                         <button class="button_quiz">
                             Retourner à mon score
                         </button>
                     </a>
-                    <a href="">
+                    <a href="./accueil.html">
                         <button class="button_quiz">
                             Retourner à l'accueil
                         </button>
@@ -298,23 +315,31 @@
                 <p class="question_quiz">
                     Quel est le taux d'humidité ?
                 </p>
+                <div class="response_quiz">
+                    <p class="player_response">
+                        <b>Ma réponse :</b>
+                    </p>
+                    <p class="best_response">
+                        <b>La bonne réponse :</b>
+                    </p>
+                </div>
                 <div class="button_group_quiz">
-                    <a href="#response_pressure">
+                    <a class="link_response_pressure" href="#response_pressure">
                         <button class="button_quiz">
                             Question précédante
                         </button>
                     </a>
-                    <a href="#response_climat">
+                    <a class="link_response_climat" href="#response_climat">
                         <button class="button_quiz">
                             Question suivante
                         </button>
                     </a>
-                    <a href="#section_score">
+                    <a class="link_score" href="#section_score">
                         <button class="button_quiz">
                             Retourner à mon score
                         </button>
                     </a>
-                    <a href="">
+                    <a href="./accueil.html">
                         <button class="button_quiz">
                             Retourner à l'accueil
                         </button>
@@ -327,23 +352,31 @@
                 <p class="question_quiz">
                     Description du climat
                 </p>
+                <div class="response_quiz">
+                    <p class="player_response">
+                        <b>Ma réponse :</b>
+                    </p>
+                    <p class="best_response">
+                        <b>La bonne réponse :</b>
+                    </p>
+                </div>
                 <div class="button_group_quiz">
-                    <a href="#response_humidity">
+                    <a class="link_response_humidity" href="#response_humidity">
                         <button class="button_quiz">
                             Question précédante
                         </button>
                     </a>
-                    <a href="#response_wind">
+                    <a class="link_response_wind" href="#response_wind">
                         <button class="button_quiz">
                             Question suivante
                         </button>
                     </a>
-                    <a href="#section_score">
+                    <a class="link_score" href="#section_score">
                         <button class="button_quiz">
                             Retourner à mon score
                         </button>
                     </a>
-                    <a href="">
+                    <a href="./accueil.html">
                         <button class="button_quiz">
                             Retourner à l'accueil
                         </button>
@@ -356,23 +389,31 @@
                 <p class="question_quiz">
                     Quelle est la direction du vent ?
                 </p>
+                <div class="response_quiz">
+                    <p class="player_response">
+                        <b>Ma réponse :</b>
+                    </p>
+                    <p class="best_response">
+                        <b>La bonne réponse :</b>
+                    </p>
+                </div>
                 <div class="button_group_quiz">
-                    <a href="#response_climat">
+                    <a class="link_response_climat" href="#response_climat">
                         <button class="button_quiz">
                             Question précédante
                         </button>
                     </a>
-                    <a href="#response_visibility">
+                    <a class="link_response_visibility" href="#response_visibility">
                         <button class="button_quiz">
                             Question suivante
                         </button>
                     </a>
-                    <a href="#section_score">
+                    <a class="link_score" href="#section_score">
                         <button class="button_quiz">
                             Retourner à mon score
                         </button>
                     </a>
-                    <a href="">
+                    <a href="./accueil.html">
                         <button class="button_quiz">
                             Retourner à l'accueil
                         </button>
@@ -385,23 +426,31 @@
                 <p class="question_quiz">
                     Quelle est la distance de Visibilité ? (maximum 10km)
                 </p>
+                <div class="response_quiz">
+                    <p class="player_response">
+                        <b>Ma réponse :</b>
+                    </p>
+                    <p class="best_response">
+                        <b>La bonne réponse :</b>
+                    </p>
+                </div>
                 <div class="button_group_quiz">
-                    <a href="#response_wind">
+                    <a class="link_response_wind" href="#response_wind">
                         <button class="button_quiz">
                             Question précédante
                         </button>
                     </a>
-                    <a href="#response_precipitation">
+                    <a class="link_response_precipitation" href="#response_precipitation">
                         <button class="button_quiz">
                             Question suivante
                         </button>
                     </a>
-                    <a href="#section_score">
+                    <a class="link_score" href="#section_score">
                         <button class="button_quiz">
                             Retourner à mon score
                         </button>
                     </a>
-                    <a href="">
+                    <a href="./accueil.html">
                         <button class="button_quiz">
                             Retourner à l'accueil
                         </button>
@@ -414,23 +463,31 @@
                 <p class="question_quiz">
                     Queles sont les precipitations ? (en mm)
                 </p>
+                <div class="response_quiz">
+                    <p class="player_response">
+                        <b>Ma réponse :</b>
+                    </p>
+                    <p class="best_response">
+                        <b>La bonne réponse :</b>
+                    </p>
+                </div>
                 <div class="button_group_quiz">
-                    <a href="#response_visibility">
+                    <a class="link_response_visibility" href="#response_visibility">
                         <button class="button_quiz">
                             Question précédante
                         </button>
                     </a>
-                    <a href="#response_sunrise">
+                    <a class="link_response_sunrise" href="#response_sunrise">
                         <button class="button_quiz">
                             Question suivante
                         </button>
                     </a>
-                    <a href="#section_score">
+                    <a class="link_score" href="#section_score">
                         <button class="button_quiz">
                             Retourner à mon score
                         </button>
                     </a>
-                    <a href="">
+                    <a href="./accueil.html">
                         <button class="button_quiz">
                             Retourner à l'accueil
                         </button>
@@ -443,23 +500,31 @@
                 <p class="question_quiz">
                     A quelle heure le soleil se lève ?
                 </p>
+                <div class="response_quiz">
+                    <p class="player_response">
+                        <b>Ma réponse :</b>
+                    </p>
+                    <p class="best_response">
+                        <b>La bonne réponse :</b>
+                    </p>
+                </div>
                 <div class="button_group_quiz">
-                    <a href="#response_precipitation">
+                    <a class="link_response_precipitation" href="#response_precipitation">
                         <button class="button_quiz">
                             Question précédante
                         </button>
                     </a>
-                    <a href="#response_sunset">
+                    <a class="link_response_sunset" href="#response_sunset">
                         <button class="button_quiz">
                             Question suivante
                         </button>
                     </a>
-                    <a href="#section_score">
+                    <a class="link_score" href="#section_score">
                         <button class="button_quiz">
                             Retourner à mon score
                         </button>
                     </a>
-                    <a href="">
+                    <a href="./accueil.html">
                         <button class="button_quiz">
                             Retourner à l'accueil
                         </button>
@@ -472,18 +537,26 @@
                 <p class="question_quiz">
                     A quelle heure le soleil se couche ?
                 </p>
+                <div class="response_quiz">
+                    <p class="player_response">
+                        <b>Ma réponse :</b>
+                    </p>
+                    <p class="best_response">
+                        <b>La bonne réponse :</b>
+                    </p>
+                </div>
                 <div class="button_group_quiz">
-                    <a href="#response_sunrise">
+                    <a class="link_response_sunrise" href="#response_sunrise">
                         <button class="button_quiz">
                             Question précédante
                         </button>
                     </a>
-                    <a href="#section_score">
+                    <a class="link_score" href="#section_score">
                         <button class="button_quiz">
                             Retourner à mon score
                         </button>
                     </a>
-                    <a href="">
+                    <a href="./accueil.html">
                         <button class="button_quiz">
                             Retourner à l'accueil
                         </button>

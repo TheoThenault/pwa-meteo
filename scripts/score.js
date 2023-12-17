@@ -12,7 +12,7 @@
     // STRUCTURE D'UN SCORE
 
     {
-        "date": "2023-12-05",
+        "date": "2023-12-05 12:05:30:300",
         "score": 1234567890
     }
 
@@ -52,8 +52,15 @@ function save_scores()
 
 function save_new_score(raw_score)
 {
+    date = new Date()
     var new_score = {
-        "date": new Date().toISOString(),
+        "date": date.getFullYear().toString()+"-"+
+        date.getMonth().toString()+"-"+
+        date.getDate().toString()+" "+
+        date.getHours().toString()+":"+
+        date.getMinutes().toString()+":"+
+        date.getSeconds().toString()+":"+
+        date.getMilliseconds().toString(),
         "score": raw_score
     }
     LIST_SCORES.push(new_score);
@@ -78,6 +85,10 @@ function get_best_score()
     });
 
     return best_score;
+}
+function get_list_score(){
+    load_scores()
+    return LIST_SCORES
 }
 
 function debugPrintScores()
