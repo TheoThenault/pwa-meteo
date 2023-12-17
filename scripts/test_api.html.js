@@ -75,20 +75,20 @@ function printForecast(forecast)
     min_sunrise = new Date(forecast.sunrise*1000).getMinutes()
     min_sunset = new Date(forecast.sunset*1000).getMinutes()
     
-    forecast_as_string  = `<p>Température ressentie: ${forecast.list[0].main.feels_like}</p>`
-    forecast_as_string += `<p>Pression ressentie: ${forecast.list[0].main.grnd_level}</p>`
-    forecast_as_string += `<p>Taux d'humidité: ${forecast.list[0].main.humidity}</p>`
-    forecast_as_string += `<p>Temps: ${forecast.list[0].weather[0].description}</p>`
-    forecast_as_string += `<p>Direction du vent: ${forecast.list[0].wind.deg}</p>`
-    forecast_as_string += `<p>Distance de visibilité: ${forecast.list[0].visibility}</p>`
+    forecast_as_string  = `<p>Température ressentie: <b>${forecast.list[0].main.feels_like}</b></p>`
+    forecast_as_string += `<p>Pression ressentie: <b>${forecast.list[0].main.grnd_level}</b></p>`
+    forecast_as_string += `<p>Taux d'humidité: <b>${forecast.list[0].main.humidity}</b></p>`
+    forecast_as_string += `<p>Temps: <b>${forecast.list[0].weather[0].description}</b></p>`
+    forecast_as_string += `<p>Direction du vent: <b>${forecast.list[0].wind.deg}</b></p>`
+    forecast_as_string += `<p>Distance de visibilité: <b>${forecast.list[0].visibility}</b></p>`
     rain_in_last_3h = 0
     try{
         // RAIN MAY BE NULL IF NO RAIN
         rain_in_last_3h = forecast.list[0].rain["3h"]
     }catch(error){}
-    forecast_as_string += `<p>Précipitations: ${rain_in_last_3h}</p>`
-    forecast_as_string += `<p>Levé du soleil: ${hours_sunrise}:${min_sunrise}</p>`
-    forecast_as_string += `<p>Couché du soleil: ${hours_sunset}:${min_sunset}</p>`
+    forecast_as_string += `<p>Précipitations: <b>${rain_in_last_3h}</b></p>`
+    forecast_as_string += `<p>Levé du soleil: <b>${hours_sunrise}:${min_sunrise}</b></p>`
+    forecast_as_string += `<p>Couché du soleil: <b>${hours_sunset}:${min_sunset}</b></p>`
 
     pPrintForecast.innerHTML = forecast_as_string
 
@@ -101,20 +101,20 @@ function printForecastFromLocal(forecast)
     min_sunrise = new Date(forecast.sunrise*1000).getMinutes()
     min_sunset = new Date(forecast.sunset*1000).getMinutes()
     
-    forecast_as_string  = `<p>Température ressentie: ${forecast.main.feels_like}</p>`
-    forecast_as_string += `<p>Pression ressentie: ${forecast.main.grnd_level}</p>`
-    forecast_as_string += `<p>Taux d'humidité: ${forecast.main.humidity}</p>`
-    forecast_as_string += `<p>Temps: ${forecast.weather[0].description}</p>`
-    forecast_as_string += `<p>Direction du vent: ${forecast.wind.deg}</p>`
-    forecast_as_string += `<p>Distance de visibilité: ${forecast.visibility}</p>`
+    forecast_as_string  = `<p>Température ressentie: <b>${forecast.main.feels_like}</b></p>`
+    forecast_as_string += `<p>Pression ressentie: <b>${forecast.main.grnd_level}</b></p>`
+    forecast_as_string += `<p>Taux d'humidité: <b>${forecast.main.humidity}</b></p>`
+    forecast_as_string += `<p>Temps: <b>${forecast.weather[0].description}</b></p>`
+    forecast_as_string += `<p>Direction du vent: <b>${forecast.wind.deg}</b></p>`
+    forecast_as_string += `<p>Distance de visibilité: <b>${forecast.visibility}</b></p>`
     rain_in_last_3h = 0
     try{
         // RAIN MAY BE NULL IF NO RAIN
         rain_in_last_3h = forecast.rain["3h"]
     }catch(error){}
-    forecast_as_string += `<p>Précipitations: ${rain_in_last_3h}</p>`
-    forecast_as_string += `<p>Levé du soleil: ${hours_sunrise}:${min_sunrise}</p>`
-    forecast_as_string += `<p>Couché du soleil: ${hours_sunset}:${min_sunset}</p>`
+    forecast_as_string += `<p>Précipitations: <b>${rain_in_last_3h}</b></p>`
+    forecast_as_string += `<p>Levé du soleil: <b>${hours_sunrise}:${min_sunrise}</b></p>`
+    forecast_as_string += `<p>Couché du soleil: <b>${hours_sunset}:${min_sunset}</b></p>`
 
     pPrintForecast.innerHTML = forecast_as_string
 
