@@ -3,56 +3,79 @@
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="manifest" href="infometeo.webmanifest" />
+        <link rel="stylesheet" href="../styles/accueil.css">
+
     </head>
     <body>
+        <header class="header_accueil">
 
-        <!-- WEATHER API -->
-        <h1>InfoMétéo</h1>
-        <p>
-            Voici les données d'aujourd'hui :
+            <h1 class="title_accueil">Accueil</h1>
+        </header>
+        <article class="article_accueil">
+            <section class="section_accueil">
+                <div>
+                    <!-- WEATHER API -->
+                    <h1 class="text_accueil">InfoMétéo</h1>
+                    <p class="text_accueil">
+                        Voici les données d'aujourd'hui :
 
-            <div id="printForecast"></div>
-        </p>
-        <!-- ########### -->:
+                        <div id="printForecast" class="text_accueil"></div>
+                    </p>
+                    <!-- ########### -->
+                </div>
 
-        <!-- API KEY PRINT -->
-        <div id="listScore"></div>
-        <!-- ########### -->:
+                <div>
+                    <!-- LIST SCORE -->
+                    <h2 class="text_accueil">Mes Scores</h2>
+                    <p class="text_accueil">
+                        Voici la liste de vos scores :
+                        <div id="listScore" class="text_accueil"></div>
+                    </p>
+                    <!-- ########### -->
+                </div>
 
-        <!-- API KEY PRINT -->
-        <h2>APIkey</h2>
-        <p>Voici votre clé API :
-            <b id="printKey"></b>
-        </p>
-        <!-- ####################### -->
+                <div>
+                    <!-- API KEY PRINT -->
+                    <h2 class="text_accueil">APIkey</h2>
+                    <p class="text_accueil">Voici votre clé API :
+                        <b id="printKey"></b>
+                    </p>
+                    <!-- ####################### -->
+                </div>
 
-        <!-- GEOLOCATION GET AND PRINT -->
-        <h2>Geolocation</h2>
-        <p>
-            Voici votre géolocalisation :
-            <b id="printGeoloc"></b>
-        </p>
-        <!-- ######################### -->
+                <div>
+                    <!-- GEOLOCATION GET AND PRINT -->
+                    <h2 class="text_accueil">Geolocation</h2>
+                    <p class="text_accueil">
+                        Voici votre géolocalisation :
+                        <b id="printGeoloc"></b>
+                    </p>
+                    <!-- ######################### -->
+                </div>
+            </section>
 
-        <a href="./quiz.html">
-            <button>
-                Refaire le Quiz
-            </button>
-        </a>
-        <a href="./APIkey.html">
-            <button id="button_clear">
-                Vider le Stockage local et changer la cle API
-            </button>
-        </a>
-        <button id="getForecast">
-            Recharger les informations météo
-        </button>
-        <button id="getGeoloc">
-            Recharger la géolocalisation
-        </button>
-        <button onclick="call_notificationb('InfoMétéo', 'Notification')">
-            Recevoir une notification
-        </button>
+            <section class="section_accueil">
+                <a href="./quiz.html">
+                    <button class="button_accueil">
+                        Refaire le Quiz
+                    </button>
+                </a>
+                <a href="./APIkey.html">
+                    <button id="button_clear" class="button_accueil">
+                        Vider le Stockage local et changer la cle API
+                    </button>
+                </a>
+                <button id="getForecast" class="button_accueil">
+                    Recharger les informations météo
+                </button>
+                <button id="getGeoloc" class="button_accueil">
+                    Recharger la géolocalisation
+                </button>
+                <button class="button_accueil" onclick="call_notificationb('InfoMétéo', 'Notification')">
+                    Recevoir une notification
+                </button>
+            </section>
+        </article>
 
         <script src="../scripts/geolocalisation.js"></script>
         <script src="../scripts/localStorage.js"></script>
