@@ -146,6 +146,7 @@ onLoadGetForecast().then(() => {
 
 function read_user_answers()
 {
+    console.log(inputWeather.value)
     USER_ANSWERS = {
         "temp":       parseFloat(inputTemp.value),
         "pressure":   parseInt(inputPressure.value),

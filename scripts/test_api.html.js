@@ -1,4 +1,4 @@
-var btnStoreKey = document.getElementById("storeKey")
+//var btnStoreKey = document.getElementById("storeKey")
 var btnGetGeoloc = document.getElementById("getGeoloc")
 var btnGetForecast = document.getElementById("getForecast")
 
@@ -19,11 +19,11 @@ if(!API_KEY)
     pPrintKey.textContent = API_KEY
 }
 
-btnStoreKey.addEventListener("click", () => {
+/*btnStoreKey.addEventListener("click", () => {
     sauvegarder("OPENWEATHER_API_KEY", textKey.value)
     API_KEY = textKey.value
     pPrintKey.innerText = textKey.value
-})
+})*/
 
 var LAT = -1
 var LON = -1
@@ -40,7 +40,7 @@ btnGetGeoloc.addEventListener("click", () => {
             try{
                 LAT = result.coords.latitude
                 LON = result.coords.longitude
-                pPrintGeoloc.textContent = `Latitude:${LAT}    Longitude:${LON}`
+                pPrintGeoloc.textContent = `Latitude: ${LAT}    Longitude: ${LON}`
             }catch (error){}
         })
     }
@@ -70,6 +70,10 @@ btnGetForecast.addEventListener("click", () => {
 
 function printForecast(forecast)
 {
+    hours_sunrise = new Date(forecast.sunrise*1000).getHours()
+    hours_sunset = new Date(forecast.sunset*1000).getHours()
+    min_sunrise = new Date(forecast.sunrise*1000).getMinutes()
+    min_sunset = new Date(forecast.sunset*1000).getMinutes()
     
     forecast_as_string  = `<p>Température ressentie: ${forecast.list[0].main.feels_like}</p>`
     forecast_as_string += `<p>Pression ressentie: ${forecast.list[0].main.grnd_level}</p>`
@@ -82,9 +86,9 @@ function printForecast(forecast)
         // RAIN MAY BE NULL IF NO RAIN
         rain_in_last_3h = forecast.list[0].rain["3h"]
     }catch(error){}
-    forecast_as_string += `<p>Précipitations 3 heures (mm): ${rain_in_last_3h}</p>`
-    forecast_as_string += `<p>Levé du soleil: ${new Date(forecast.city.sunrise*1000).toString()}</p>`
-    forecast_as_string += `<p>Couché du soleil: ${new Date(forecast.city.sunset*1000).toString()}</p>`
+    forecast_as_string += `<p>Précipitations: ${rain_in_last_3h}</p>`
+    forecast_as_string += `<p>Levé du soleil: ${hours_sunrise}:${min_sunrise}</p>`
+    forecast_as_string += `<p>Couché du soleil: ${hours_sunset}:${min_sunset}</p>`
 
     pPrintForecast.innerHTML = forecast_as_string
 
@@ -92,6 +96,10 @@ function printForecast(forecast)
 
 function printForecastFromLocal(forecast)
 {
+    hours_sunrise = new Date(forecast.sunrise*1000).getHours()
+    hours_sunset = new Date(forecast.sunset*1000).getHours()
+    min_sunrise = new Date(forecast.sunrise*1000).getMinutes()
+    min_sunset = new Date(forecast.sunset*1000).getMinutes()
     
     forecast_as_string  = `<p>Température ressentie: ${forecast.main.feels_like}</p>`
     forecast_as_string += `<p>Pression ressentie: ${forecast.main.grnd_level}</p>`
@@ -104,9 +112,9 @@ function printForecastFromLocal(forecast)
         // RAIN MAY BE NULL IF NO RAIN
         rain_in_last_3h = forecast.rain["3h"]
     }catch(error){}
-    forecast_as_string += `<p>Précipitations 3 heures (mm): ${rain_in_last_3h}</p>`
-    forecast_as_string += `<p>Levé du soleil: ${new Date(forecast.sunrise*1000).toString()}</p>`
-    forecast_as_string += `<p>Couché du soleil: ${new Date(forecast.sunset*1000).toString()}</p>`
+    forecast_as_string += `<p>Précipitations: ${rain_in_last_3h}</p>`
+    forecast_as_string += `<p>Levé du soleil: ${hours_sunrise}:${min_sunrise}</p>`
+    forecast_as_string += `<p>Couché du soleil: ${hours_sunset}:${min_sunset}</p>`
 
     pPrintForecast.innerHTML = forecast_as_string
 

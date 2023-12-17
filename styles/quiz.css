@@ -10,21 +10,6 @@
     background-color: lightblue;
 }
 
-.bar_burger_menu{
-    height: 5px;
-    margin-top: 1px;
-    margin-bottom: 1px;
-    background-color: black;
-}
-
-.burger_menu_quiz{
-    height: 21px;
-    margin-right: 0.5dvh;
-    width: 20px;
-    display: flex;
-    flex-direction: column;
-}
-
 .title_quiz{
     height: 10dvh;
     margin-top: 0;

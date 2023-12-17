@@ -11,12 +11,6 @@
     <body class="body_quiz">
         <!-- The header will indicate this page is a quiz-->
         <header class="header_quiz">
-            <!--It contains a burger menu-->
-            <div class="burger_menu_quiz">
-                <div class="bar_burger_menu"></div>
-                <div class="bar_burger_menu"></div>
-                <div class="bar_burger_menu"></div>
-            </div>
 
             <!--It contains a title-->
             <h1 class="title_quiz">Quiz météo</h1>
@@ -27,11 +21,18 @@
 
             <!--First section let user begin the quiz-->
             <section id="question_begin" class="section_quiz">
-                <a class="link_question_temperature" href="#question_temperature">
-                    <button class="button_quiz">
-                        Commencer le quiz
-                    </button>
-                </a>
+                <div>
+                    <a class="link_question_temperature" href="#question_temperature">
+                        <button class="button_quiz">
+                            Commencer le quiz
+                        </button>
+                    </a>
+                    <a href="./accueil.html">
+                        <button class="button_quiz">
+                            Allez directement à la page d'accueil
+                        </button>
+                    </a>
+                </div>
             </section>
 
             <!--Then there are eight sections who represent the questions-->
@@ -100,18 +101,17 @@
                 <p class="question_quiz">
                     Description du climat
                 </p>
-                <input type="text" list="climat_desc" id="inputWeather">
-                <datalist id="climat_desc">
-                    <option value="clear sky"></option>
-                    <option value="few clouds"></option>
-                    <option value="scattered clouds"></option>
-                    <option value="broken clouds"></option>
-                    <option value="shower rain"></option>
-                    <option value="rain"></option>
-                    <option value="thunderstorm"></option>
-                    <option value="snow"></option>
-                    <option value="mist"></option>
-                </datalist>
+                <select id="inputWeather" value="clear sky">
+                    <option value="clear sky">clear sky</option>
+                    <option value="few clouds">few clouds</option>
+                    <option value="scattered clouds">scattered clouds</option>
+                    <option value="broken clouds">broken clouds</option>
+                    <option value="shower rain">shower rain</option>
+                    <option value="rain">rain</option>
+                    <option value="thunderstorm">thunderstorm</option>
+                    <option value="snow">snow</option>
+                    <option value="mist">mist</option>
+                </select>
                 <div class="button_group_quiz">
                     <a class="link_question_humidity" href="#question_humidity">
                         <button class="button_quiz">
@@ -171,7 +171,7 @@
                 <p class="question_quiz">
                     Queles sont les precipitations ? (en mm)
                 </p>
-                <input type="number" class="input_number_quiz" id="inputRain" value="0">
+                <input type="number" class="input_number_quiz" id="inputRain" value="1" min="1">
                 <div class="button_group_quiz">
                     <a class="link_question_visibility" href="#question_visibility">
                         <button class="button_quiz">
