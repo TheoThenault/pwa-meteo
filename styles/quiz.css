@@ -39,7 +39,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
-    height: 100dvh;
+    height: 97dvh;
     visibility: visible;
 }
 
@@ -113,7 +113,35 @@ p#score {
     text-align: center;
     color: #fff;
     text-shadow: 1px 1px 1px #000;
-    background-color: red;
+    background-color: yellow;
+}
+.response_quiz{
+    display: flex;
+    flex-direction: row;
+}
+.player_response,
+.best_response {
+    border: 0;
+    line-height: 2;
+    padding-top: 10dvh;
+    padding-left: 10dvw;
+    padding-bottom: 10dvh;
+    padding-right: 10dvw;
+    margin-top: 1dvh;
+    margin-left: 1dvw;
+    margin-bottom: 1dvh;
+    margin-right: 1dvw;
+    border-radius: 20px;
+    font-size: 30px;
+    text-align: center;
+    text-shadow: 1px 1px 1px #000;
+    background-color: blue;
+}
+.player_response{
+    color: red;
+}
+.best_response{
+    color: green;
 }
 
 .input_number_quiz,
@@ -133,14 +161,37 @@ p#score {
     text-align: center;
     color: #fff;
     text-shadow: 1px 1px 1px #000;
-    background-color: red;
+    background-color: yellow;
+}
+
+#score {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 0;
+    line-height: 3;
+    padding-top: 10dvh;
+    padding-left: 10dvw;
+    padding-bottom: 10dvh;
+    padding-right: 10dvw;
+    border-radius: 30px;
+    font-size: 1rem;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    text-align: center;
+    color: #fff;
+    text-shadow: 1px 1px 1px #000;
+    background-color: blue;
+}
+#precision_score {
+    color: yellow;
 }
 
 .input_number_quiz:hover,
 .input_range_quiz:hover,
 .input_time_quiz:hover,
 .button_quiz:hover {
-    background-color: yellow
+    background-color: black
 }
 
 .input_number_quiz:active,
